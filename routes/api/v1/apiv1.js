@@ -1,4 +1,4 @@
-import express, { query } from 'express';
+import express from 'express';
 import fetch from 'node-fetch';
 import parser from 'node-html-parser';
 var router = express.Router();
