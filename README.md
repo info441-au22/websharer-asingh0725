@@ -1,3 +1,3 @@
-- URL of the deployed website on heroku: https://intense-reef-45057.herokuapp.com/
-- The additional piece of information I added was a username and displayed it before the title in the posts.
+- URL of the deployed website on heroku: https://protected-basin-87253.herokuapp.com/
+- The additional piece of information I added was a username and displayed it before the title in the posts and content type.
 - Students who helped me with the code: No one
