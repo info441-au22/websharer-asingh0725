@@ -10,7 +10,8 @@ router.post('/', async function(req, res, next) {
             url: req.body.url,
             description: req.body.description,
             created_date: Date(),
-            content: req.body.type
+            content: req.body.type,
+            username: req.body.username
         })
         await post.save();
         res.json({"status": "success"})
@@ -27,17 +28,20 @@ router.get('/', async function(req, res, next) {
         for(let i = 0; i < posts.length; i++) {
             const postHTML = await getURLPreview(posts[i].url);
             const postJSON = {
+                username: posts[i].username,
                 description: posts[i].description,
                 htmlPreview: postHTML,
             }
             htmlDescArr.push(postJSON);
         }
-        res.type('json');
-        res.send(htmlDescArr);
+        
     } catch(error) {
         console.log(error);
         res.status(500).json({status: "error", error: error});
-    }    
+    }           
+    res.type('json');
+    console.log(htmlDescArr)
+    res.send(htmlDescArr);
 })
 
 export default router;

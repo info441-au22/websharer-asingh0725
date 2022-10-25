@@ -13,6 +13,7 @@ async function main(){
         url: String,
         description: String,
         created_date: String,
+        username: String,
     })
     
     models.Post = mongoose.model('Post', postSchema)
