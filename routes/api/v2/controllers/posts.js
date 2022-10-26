@@ -38,9 +38,8 @@ router.get('/', async function(req, res, next) {
     } catch(error) {
         console.log(error);
         res.status(500).json({status: "error", error: error});
-    }           
+    }
     res.type('json');
-    console.log(htmlDescArr)
     res.send(htmlDescArr);
 })
 
