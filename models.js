@@ -14,6 +14,7 @@ async function main(){
         description: String,
         created_date: String,
         username: String,
+        content: String,
     })
     
     models.Post = mongoose.model('Post', postSchema)
