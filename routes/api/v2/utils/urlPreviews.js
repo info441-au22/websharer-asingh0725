@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import parser from 'node-html-parser';
 
 async function getURLPreview(url){
-  const content = fetch(url)
+  let content = fetch(url)
         .then(res => res.text())
         .then(value => {
             const parsedHTML = parser.parse(value);
@@ -12,7 +12,7 @@ async function getURLPreview(url){
             const openGraphImage = parsedHTML.querySelector("meta[property='og:image']");
             const openGraphDescription = parsedHTML.querySelector("meta[property='og:description']");
             const openGraphType = parsedHTML.querySelector("meta[property='og:type']");
-            let url = openGraphURL == null ? url : openGraphURL.getAttribute('content');
+            let previewURL = openGraphURL == null ? url : openGraphURL.getAttribute('content');
             let title = openGraphTitle == null ? 
                         (parsedHTML.getElementsByTagName('title')[0] != undefined ?
                          parsedHTML.getElementsByTagName('title')[0].innerHTML :
@@ -24,7 +24,7 @@ async function getURLPreview(url){
             let description = openGraphDescription == null ? "" : "<p>" + openGraphDescription.getAttribute('content') + "</p>";
             const htmlResponse = 
                 `<div style="max-width: 300px; border: solid 1px; padding: 3px; text-align: center;">
-                    <a href=${url}>
+                    <a href=${previewURL}>
                         <p><strong>
                             ${title}
                         </strong></p>
