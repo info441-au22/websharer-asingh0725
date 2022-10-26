@@ -12,11 +12,11 @@ async function getURLPreview(url){
             const openGraphImage = parsedHTML.querySelector("meta[property='og:image']");
             const openGraphDescription = parsedHTML.querySelector("meta[property='og:description']");
             const openGraphType = parsedHTML.querySelector("meta[property='og:type']");
-            let url = openGraphURL == null ? queryString : openGraphURL.getAttribute('content');
+            let url = openGraphURL == null ? url : openGraphURL.getAttribute('content');
             let title = openGraphTitle == null ? 
                         (parsedHTML.getElementsByTagName('title')[0] != undefined ?
                          parsedHTML.getElementsByTagName('title')[0].innerHTML :
-                         queryString) : openGraphTitle.getAttribute('content');
+                         url) : openGraphTitle.getAttribute('content');
             let image = openGraphImage == null ? 
                         "" : '<img src='+openGraphImage.getAttribute('content') +'  style="max-height: 200px; max-width: 270px;">';
             let type = openGraphType == null ? 
