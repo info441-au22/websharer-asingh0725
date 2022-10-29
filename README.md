@@ -1,3 +1,1 @@
-- URL of the deployed website on heroku: https://protected-basin-87253.herokuapp.com/
-- The additional piece of information I added was a username and displayed it before the title in the posts and content type.
-- Students who helped me with the code: No one
+- URL of the deployed website on azure: https://www.aviraj-singh.me/
