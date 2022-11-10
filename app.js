@@ -12,7 +12,7 @@ const appSettings = {
         clientSecret:  "qUw8Q~N7Ms6.IAQxB7EnVf_WtBnRda9xfSJiZa3x"
     },	
     authRoutes: {
-        redirect: "https://localhost:3000/redirect",
+        redirect: "https://www.aviraj-singh.me/redirect",
         error: "/error",
         unauthorized: "/unauthorized"
     }
@@ -20,7 +20,7 @@ const appSettings = {
 
 import apiv1Router from './routes/api/v1/apiv1.js';
 import apiv2Router from './routes/api/v2/apiv2.js';
-import apiv3Router from './routes/api/v2/apiv2.js';
+import apiv3Router from './routes/api/v3/apiv3.js';
 import usersRouter from './routes/api/v3/controllers/users.js';
 
 import { fileURLToPath } from 'url';
@@ -75,6 +75,5 @@ app.get('/error', (req, res) => {
 app.get('/unauthorized', (req, res) => {
     res.status(401).send("Error: Permission denied")
 })
-
 
 export default app;

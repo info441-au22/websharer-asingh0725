@@ -12,11 +12,11 @@ router.get('/myIdentity', async (req, res, next) => {
             }
         })
     } else {
-        res.status(401).json({
-            "status": "error",
-            "error": "not logged in",
+        res.send({
+            status: "loggedout"
         })
-      }
+    }
+    
 });
 
 export default router;

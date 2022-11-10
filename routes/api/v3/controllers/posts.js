@@ -12,7 +12,7 @@ router.post('/', async function(req, res, next) {
                 description: req.body.description,
                 created_date: Date(),
                 content: req.body.type,
-                username: req.body.username
+                username: req.session.account.name
             })
             await post.save();
             res.json({"status": "success"})

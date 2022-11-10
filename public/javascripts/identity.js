@@ -5,7 +5,6 @@ async function loadIdentity(){
 
     try{
         let identityInfo = await fetchJSON(`api/${apiVersion}/users/myIdentity`)
-
         if(identityInfo.status == "loggedin"){
             myIdentity = identityInfo.userInfo.username;
             identity_div.innerHTML = `
