@@ -5,6 +5,7 @@ async function loadIdentity(){
 
     try{
         let identityInfo = await fetchJSON(`api/${apiVersion}/users/myIdentity`)
+        
         if(identityInfo.status == "loggedin"){
             myIdentity = identityInfo.userInfo.username;
             identity_div.innerHTML = `
@@ -13,6 +14,8 @@ async function loadIdentity(){
             if(document.getElementById("make_post_div")){
                 document.getElementById("make_post_div").classList.remove("d-none");
             }
+            Array.from(document.getElementsByClassName("new-comment-box")).forEach(e => e.classList.remove("d-none"))
+            Array.from(document.getElementsByClassName("heart-button-span")).forEach(e => e.classList.remove("d-none"));
         } else { //logged out
             myIdentity = undefined;
             identity_div.innerHTML = `
@@ -20,6 +23,8 @@ async function loadIdentity(){
             if(document.getElementById("make_post_div")){
                 document.getElementById("make_post_div").classList.add("d-none");
             }
+            Array.from(document.getElementsByClassName("new-comment-box")).forEach(e => e.classList.add("d-none"))
+            Array.from(document.getElementsByClassName("heart-button-span")).forEach(e => e.classList.add("d-none"));
         }
     } catch(error){
         myIdentity = undefined;
@@ -31,5 +36,7 @@ async function loadIdentity(){
         if(document.getElementById("make_post_div")){
             document.getElementById("make_post_div").classList.add("d-none");
         }
+        Array.from(document.getElementsByClassName("new-comment-box")).forEach(e => e.classList.add("d-none"));
+        Array.from(document.getElementsByClassName("heart-button-span")).forEach(e => e.classList.add("d-none"));
     }
 }
