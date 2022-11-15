@@ -12,12 +12,20 @@ async function main(){
     const postSchema = new mongoose.Schema({
         url: String,
         description: String,
-        created_date: String,
+        created_date: Date,
         username: String,
-        content: String,
+        likes: Array,
     })
     
+    const commentSchema = new mongoose.Schema({
+        username: String,
+        comment: String,
+        post: String,
+        created_date: Date,
+    })
+
     models.Post = mongoose.model('Post', postSchema)
+    models.Comment = mongoose.model('Comment', commentSchema)
     console.log('mongoose models created')
 }
 
