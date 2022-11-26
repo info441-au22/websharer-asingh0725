@@ -4,8 +4,15 @@ async function init(){
 }
 
 async function saveUserInfo(){
-    //TODO: do an ajax call to save whatever info you want about the user from the user table
-    //see postComment() in the index.js file as an example of how to do this
+    const urlParam = new URLSearchParams(window.location.search);
+    const username = urlParam.get(`user`);
+    const age = document.getElementById('ageInput').value;
+    const personalLink = document.getElementById('linkInput').value;
+    let responseJSON = await fetchJSON(`api/${apiVersion}/userInfo`, {
+        method: "POST",
+        body: {username: username, age: age, personal_website: personalLink}
+    })
+    loadUserInfo();
 }
 
 async function loadUserInfo(){
@@ -20,8 +27,23 @@ async function loadUserInfo(){
         document.getElementById("user_info_new_div").classList.add("d-none");
     }
     
-    //TODO: do an ajax call to load whatever info you want about the user from the user table
-
+    const dataJSON = await fetchJSON(`api/${apiVersion}/userInfo?username=${username}`)
+    if(dataJSON.error) {
+        document.getElementById("user_info_div").innerHTML = `<p>${jsonData.error}</p>`;
+    } else {
+        const filteredData = dataJSON.filter((userInfo) => userInfo.username === username);
+        const outputElement = 
+            `
+            <div>
+                <p>User ${filteredData[filteredData.length - 1].username}'s age is 
+                   ${filteredData[filteredData.length - 1].age === "" ? "Age Not Entered"
+                   : filteredData[filteredData.length - 1].age}</p>
+                <p>User's personal website: ${filteredData[filteredData.length - 1].personal_website === "" ? 
+                   "Personal Website Not Entered" : filteredData[filteredData.length - 1].personal_website}</p>
+            </div>
+            `;            
+        document.getElementById("user_info_div").innerHTML = outputElement;
+    }
     loadUserInfoPosts(username)
 }
 

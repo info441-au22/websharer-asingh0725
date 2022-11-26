@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { mongo } from 'mongoose';
 
 let models = {}
 
@@ -24,8 +24,15 @@ async function main(){
         created_date: Date,
     })
 
+    const userInfo = new mongoose.Schema({
+        username: String,
+        age: String,
+        personal_website: String,
+    })
+    
     models.Post = mongoose.model('Post', postSchema)
     models.Comment = mongoose.model('Comment', commentSchema)
+    models.UserInfo = mongoose.model('UserInfo', userInfo);
     console.log('mongoose models created')
 }
 
