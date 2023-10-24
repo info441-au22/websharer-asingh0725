@@ -9,7 +9,7 @@ const appSettings = {
     appCredentials: {
         clientId: "810466f0-a38e-49c2-8ba3-f6dfb6390dbd",
         tenantId:  "f6b6dd5b-f02f-441a-99a0-162ac5060bd2",
-        clientSecret:  "qUw8Q~N7Ms6.IAQxB7EnVf_WtBnRda9xfSJiZa3x"
+        clientSecret:  ".p~8Q~MjhVWcam3PrEr~BexEgzyX4Q5uY.-LqaXy"
     },	
     authRoutes: {
         redirect: "https://www.aviraj-singh.me/redirect",
